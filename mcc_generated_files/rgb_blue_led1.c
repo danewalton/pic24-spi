@@ -1,27 +1,29 @@
 /**
-  Generated main.c file from MPLAB Code Configurator
+  RGB_BLUE_LED1 Generated Driver API Header File
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    main.c
+    rgb_blue_led1.h
 
   @Summary
-    This is the generated main.c using PIC24 / dsPIC33 / PIC32MM MCUs.
+    This is the generated header file for the RGB_BLUE_LED1 driver using Board Support Library
 
   @Description
-    This source file provides main entry point for system initialization and application code development.
+    This header file provides APIs for driver for RGB_BLUE_LED1.
     Generation Information :
-        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
+        Product Revision  :  Board Support Library - 2.0.0
         Device            :  PIC24FJ128GA705
+        Driver Version    :  0.97-b
     The generated drivers are tested against the following:
-        Compiler          :  XC16 v1.61
-        MPLAB 	          :  MPLAB X v5.45
+        Compiler          :  XC16 v1.50
+        MPLAB 	          :  MPLAB X v5.40
 */
 
+
 /*
-    (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
+    (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
     software and any derivatives exclusively with Microchip products.
 
     THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
@@ -41,35 +43,53 @@
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
 */
-
 /**
   Section: Included Files
 */
-#include "mcc_generated_files/system.h"
-#include "mcc_generated_files/rgb_red_led1.h"
-#include "mcc_generated_files/rgb_blue_led1.h"
 
-/*
-                         Main application
- */
-int main(void)
+#ifndef RGB_BLUE_LED1_H
+#define RGB_BLUE_LED1_H
+
+#include <xc.h>
+#include <stdbool.h>
+#include "mccp4_compare.h"
+#include "rgb_blue_led1.h"
+
+static bool ismccp4Enabled = false;
+
+void RGB_BLUE_LED1_Initialize()
 {
-    // initialize the device
-    SYSTEM_Initialize();
-    RGB_BLUE_LED1_Initialize();
-    RGB_RED_LED1_Initialize();
-
-    RGB_BLUE_LED1_Toggle();
-    RGB_RED_LED1_Toggle();
-
-    while (1)
-    {
-        // Add your application code
-    }
-
-    return 1;
+    //Selected pin is Non-PPS 
 }
-/**
- End of File
-*/
 
+void RGB_BLUE_LED1_On(void)
+{
+    MCCP4_COMPARE_Start();
+    ismccp4Enabled = true;
+}
+
+void RGB_BLUE_LED1_Off(void)
+{
+    MCCP4_COMPARE_Stop();
+    ismccp4Enabled = false;
+}
+
+void RGB_BLUE_LED1_Toggle(void)
+{
+    if(ismccp4Enabled == true)
+    {
+        RGB_BLUE_LED1_Off();
+    }
+    else 
+    {
+        RGB_BLUE_LED1_On();
+    }
+}
+
+void RGB_BLUE_LED1_IntensitySet(uint16_t new_intensity)
+{  
+   //Convert 16-bit to 10-bit to reduce flicker/jitter
+    new_intensity >>= 6;
+    MCCP4_COMPARE_DualCompareValueSet(0x0,new_intensity);
+}
+#endif /* RGB_BLUE_LED1_H */

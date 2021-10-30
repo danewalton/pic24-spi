@@ -1,27 +1,28 @@
 /**
-  @Generated PIC24 / dsPIC33 / PIC32MM MCUs Header File
+  RGB_BLUE_LED1 Generated Driver API Header File
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    mcc.h
+  @File Name
+    rgb_blue_led1.h
 
-  @Summary:
-    This is the mcc.h file generated using PIC24 / dsPIC33 / PIC32MM MCUs
+  @Summary
+    This is the generated header file for the RGB_BLUE_LED1 driver using Board Support Library
 
-  @Description:
-    This file will be removed in future MCC releases. Use system.h instead.
+  @Description
+    This header file provides APIs for driver for RGB_BLUE_LED1.
     Generation Information :
-        Product Revision  :  PIC24 / dsPIC33 / PIC32MM MCUs - 1.170.0
+        Product Revision  :  Board Support Library - 2.0.0
         Device            :  PIC24FJ128GA705
+        Driver Version    :  0.97-b
     The generated drivers are tested against the following:
-        Compiler          :  XC16 v1.61
-        MPLAB             :  MPLAB X v5.45
+        Compiler          :  XC16 v1.50
+        MPLAB 	          :  MPLAB X v5.40
 */
 
 /*
-    (c) 2020 Microchip Technology Inc. and its subsidiaries. You may use this
+    (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
     software and any derivatives exclusively with Microchip products.
 
     THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
@@ -42,24 +43,13 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "system.h"
-#include "clock.h"
-#include "pin_manager.h"
-#include <stdint.h>
-#include <stdbool.h>
+#ifndef RGB_BLUE_LED1_H
+#define RGB_BLUE_LED1_H
 
-#include "interrupt_manager.h"
-#include "traps.h"
-#include "spi2.h"
-#include "mccp2_compare.h"
-#include "mccp4_compare.h"
+void RGB_BLUE_LED1_Initialize();
+void RGB_BLUE_LED1_On(void);
+void RGB_BLUE_LED1_Off(void);
+void RGB_BLUE_LED1_Toggle(void);
+void RGB_BLUE_LED1_IntensitySet(uint16_t intensity);
 
-#warning "This file will be removed in future MCC releases. Use system.h instead."
-
-#endif	/* MCC_H */
-/**
- End of File
-*/
+#endif /*RGB_BLUE_LED1_H*/

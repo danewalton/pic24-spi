@@ -26,6 +26,10 @@ Command:
   build/default/production/mcc_generated_files/mcc.o \
   build/default/production/mcc_generated_files/system.o \
   build/default/production/main.o \
+  build/default/production/mcc_generated_files/mccp4_compare.o \
+  build/default/production/mcc_generated_files/rgb_blue_led1.o \
+  build/default/production/mcc_generated_files/rgb_red_led1.o \
+  build/default/production/mcc_generated_files/mccp2_compare.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24FJ128GA705.gld.00 \
@@ -94,11 +98,11 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x1ac           0x282  (642)
-.text                        0x2ac               0x1f8           0x2f4  (756)
-.dinit                       0x4a4                0x10            0x18  (24)
-.text                        0x4b4                0x1a            0x27  (39)
+.text                        0x2ac               0x4d2           0x73b  (1851)
+.dinit                       0x77e                0x28            0x3c  (60)
+.text                        0x7a6                0x3e            0x5d  (93)
 
-                 Total "program" memory used (bytes):          0x5b5  (1461) 1%
+                 Total "program" memory used (bytes):          0xa56  (2646) 1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x4000]
@@ -106,9 +110,10 @@ section                    address   length (PC units)   length (bytes) (dec)
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .ndata                       0x800                   0             0x2  (2)
-.bss                         0x802                   0            0x20  (32)
+.nbss                        0x802                   0             0x8  (8)
+.bss                         0x80a                   0            0x20  (32)
 
-                 Total "data" memory used (bytes):           0x22  (34) <1%
+                 Total "data" memory used (bytes):           0x2a  (42) <1%
 
 
 Dynamic Memory Usage
@@ -116,9 +121,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x822                              0x3fde  (16350)
+stack                        0x82a                              0x3fd6  (16342)
 
-                 Maximum dynamic memory (bytes):         0x3fde  (16350)
+                 Maximum dynamic memory (bytes):         0x3fd6  (16342)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -142,18 +147,106 @@ External Symbols in Program Memory (by address):
                   0x0003d0                  _SPI2_Exchange8bitBuffer
                   0x0003e4                  _SPI2_TransferModeGet
                   0x000408                  _SPI2_StatusGet
-                  0x000410                  _CLOCK_Initialize
-                  0x000456                  _PIN_MANAGER_Initialize
-                  0x0004b4                  _SYSTEM_Initialize
-                  0x0004c2                  _INTERRUPT_Initialize
-                  0x0004c8                  _main
+                  0x000410                  _MCCP4_COMPARE_Initialize
+                  0x00044a                  _MCCP4_COMPARE_Tasks
+                  0x000464                  _MCCP4_COMPARE_TimerTasks
+                  0x000478                  _MCCP4_COMPARE_Start
+                  0x000480                  _MCCP4_COMPARE_Stop
+                  0x000488                  _MCCP4_COMPARE_SingleCompare16ValueSet
+                  0x000494                  _MCCP4_COMPARE_DualCompareValueSet
+                  0x0004a6                  _MCCP4_COMPARE_DualEdgeBufferedConfig
+                  0x0004b8                  _MCCP4_COMPARE_CenterAlignedPWMConfig
+                  0x0004ca                  _MCCP4_COMPARE_EdgeAlignedPWMConfig
+                  0x0004dc                  _MCCP4_COMPARE_VariableFrequencyPulseConfig
+                  0x0004e8                  _MCCP4_COMPARE_IsCompareCycleComplete
+                  0x000500                  _MCCP4_COMPARE_TriggerStatusGet
+                  0x000518                  _MCCP4_COMPARE_TriggerStatusSet
+                  0x000520                  _MCCP4_COMPARE_TriggerStatusClear
+                  0x000528                  _MCCP4_COMPARE_SingleCompareStatusGet
+                  0x000540                  _MCCP4_COMPARE_SingleCompareStatusClear
+                  0x000548                  _MCCP2_COMPARE_Initialize
+                  0x000582                  _MCCP2_COMPARE_Tasks
+                  0x00059a                  _MCCP2_COMPARE_TimerTasks
+                  0x0005ae                  _MCCP2_COMPARE_Start
+                  0x0005b6                  _MCCP2_COMPARE_Stop
+                  0x0005be                  _MCCP2_COMPARE_SingleCompare16ValueSet
+                  0x0005ca                  _MCCP2_COMPARE_DualCompareValueSet
+                  0x0005dc                  _MCCP2_COMPARE_DualEdgeBufferedConfig
+                  0x0005ee                  _MCCP2_COMPARE_CenterAlignedPWMConfig
+                  0x000600                  _MCCP2_COMPARE_EdgeAlignedPWMConfig
+                  0x000612                  _MCCP2_COMPARE_VariableFrequencyPulseConfig
+                  0x00061e                  _MCCP2_COMPARE_IsCompareCycleComplete
+                  0x000636                  _MCCP2_COMPARE_TriggerStatusGet
+                  0x00064e                  _MCCP2_COMPARE_TriggerStatusSet
+                  0x000656                  _MCCP2_COMPARE_TriggerStatusClear
+                  0x00065e                  _MCCP2_COMPARE_SingleCompareStatusGet
+                  0x000676                  _MCCP2_COMPARE_SingleCompareStatusClear
+                  0x00067e                  _CLOCK_Initialize
+                  0x0006c4                  _RGB_BLUE_LED1_Initialize
+                  0x0006ca                  _RGB_BLUE_LED1_On
+                  0x0006d6                  _RGB_BLUE_LED1_Off
+                  0x0006e0                  _RGB_BLUE_LED1_Toggle
+                  0x0006f2                  _RGB_BLUE_LED1_IntensitySet
+                  0x000706                  _RGB_RED_LED1_Initialize
+                  0x00070c                  _RGB_RED_LED1_On
+                  0x000718                  _RGB_RED_LED1_Off
+                  0x000722                  _RGB_RED_LED1_Toggle
+                  0x000734                  _RGB_RED_LED1_IntensitySet
+                  0x000748                  _PIN_MANAGER_Initialize
+                  0x0007be                  _SYSTEM_Initialize
+                  0x0007d0                  _main
+                  0x0007de                  _INTERRUPT_Initialize
                   0x015f00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000410                  _CLOCK_Initialize
-                  0x0004c2                  _INTERRUPT_Initialize
-                  0x000456                  _PIN_MANAGER_Initialize
+                  0x00067e                  _CLOCK_Initialize
+                  0x0007de                  _INTERRUPT_Initialize
+                  0x0005ee                  _MCCP2_COMPARE_CenterAlignedPWMConfig
+                  0x0005ca                  _MCCP2_COMPARE_DualCompareValueSet
+                  0x0005dc                  _MCCP2_COMPARE_DualEdgeBufferedConfig
+                  0x000600                  _MCCP2_COMPARE_EdgeAlignedPWMConfig
+                  0x000548                  _MCCP2_COMPARE_Initialize
+                  0x00061e                  _MCCP2_COMPARE_IsCompareCycleComplete
+                  0x0005be                  _MCCP2_COMPARE_SingleCompare16ValueSet
+                  0x000676                  _MCCP2_COMPARE_SingleCompareStatusClear
+                  0x00065e                  _MCCP2_COMPARE_SingleCompareStatusGet
+                  0x0005ae                  _MCCP2_COMPARE_Start
+                  0x0005b6                  _MCCP2_COMPARE_Stop
+                  0x000582                  _MCCP2_COMPARE_Tasks
+                  0x00059a                  _MCCP2_COMPARE_TimerTasks
+                  0x000656                  _MCCP2_COMPARE_TriggerStatusClear
+                  0x000636                  _MCCP2_COMPARE_TriggerStatusGet
+                  0x00064e                  _MCCP2_COMPARE_TriggerStatusSet
+                  0x000612                  _MCCP2_COMPARE_VariableFrequencyPulseConfig
+                  0x0004b8                  _MCCP4_COMPARE_CenterAlignedPWMConfig
+                  0x000494                  _MCCP4_COMPARE_DualCompareValueSet
+                  0x0004a6                  _MCCP4_COMPARE_DualEdgeBufferedConfig
+                  0x0004ca                  _MCCP4_COMPARE_EdgeAlignedPWMConfig
+                  0x000410                  _MCCP4_COMPARE_Initialize
+                  0x0004e8                  _MCCP4_COMPARE_IsCompareCycleComplete
+                  0x000488                  _MCCP4_COMPARE_SingleCompare16ValueSet
+                  0x000540                  _MCCP4_COMPARE_SingleCompareStatusClear
+                  0x000528                  _MCCP4_COMPARE_SingleCompareStatusGet
+                  0x000478                  _MCCP4_COMPARE_Start
+                  0x000480                  _MCCP4_COMPARE_Stop
+                  0x00044a                  _MCCP4_COMPARE_Tasks
+                  0x000464                  _MCCP4_COMPARE_TimerTasks
+                  0x000520                  _MCCP4_COMPARE_TriggerStatusClear
+                  0x000500                  _MCCP4_COMPARE_TriggerStatusGet
+                  0x000518                  _MCCP4_COMPARE_TriggerStatusSet
+                  0x0004dc                  _MCCP4_COMPARE_VariableFrequencyPulseConfig
+                  0x000748                  _PIN_MANAGER_Initialize
+                  0x0006c4                  _RGB_BLUE_LED1_Initialize
+                  0x0006f2                  _RGB_BLUE_LED1_IntensitySet
+                  0x0006d6                  _RGB_BLUE_LED1_Off
+                  0x0006ca                  _RGB_BLUE_LED1_On
+                  0x0006e0                  _RGB_BLUE_LED1_Toggle
+                  0x000706                  _RGB_RED_LED1_Initialize
+                  0x000734                  _RGB_RED_LED1_IntensitySet
+                  0x000718                  _RGB_RED_LED1_Off
+                  0x00070c                  _RGB_RED_LED1_On
+                  0x000722                  _RGB_RED_LED1_Toggle
                   0x0002c6                  _SPI2_Exchange
                   0x0003c0                  _SPI2_Exchange8bit
                   0x0003d0                  _SPI2_Exchange8bitBuffer
@@ -161,7 +254,7 @@ External Symbols in Program Memory (by name):
                   0x0002ac                  _SPI2_Initialize
                   0x000408                  _SPI2_StatusGet
                   0x0003e4                  _SPI2_TransferModeGet
-                  0x0004b4                  _SYSTEM_Initialize
+                  0x0007be                  _SYSTEM_Initialize
                   0x000246                  __AddressError
                   0x0002a6                  __DefaultInterrupt
                   0x015f00                  __FSEC.sec
@@ -173,7 +266,7 @@ External Symbols in Program Memory (by name):
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x0004c8                  _main
+                  0x0007d0                  _main
 
 Memory Configuration
 
@@ -203,6 +296,10 @@ LOAD build/default/production/mcc_generated_files/traps.o
 LOAD build/default/production/mcc_generated_files/mcc.o
 LOAD build/default/production/mcc_generated_files/system.o
 LOAD build/default/production/main.o
+LOAD build/default/production/mcc_generated_files/mccp4_compare.o
+LOAD build/default/production/mcc_generated_files/rgb_blue_led1.o
+LOAD build/default/production/mcc_generated_files/rgb_red_led1.o
+LOAD build/default/production/mcc_generated_files/mccp2_compare.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
@@ -291,7 +388,7 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x192a
+.debug_info       0x000000       0x3675
  *(.debug_info)
  .debug_info      0x000000        0x138 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_info      0x000138        0x3a1 build/default/production/mcc_generated_files/pin_manager.o
@@ -300,9 +397,13 @@ __FDEVOPT1
  .debug_info      0x001108        0x3fd build/default/production/mcc_generated_files/traps.o
  .debug_info      0x001505        0x31a build/default/production/mcc_generated_files/system.o
  .debug_info      0x00181f        0x10b build/default/production/main.o
+ .debug_info      0x00192a        0xc99 build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_info      0x0025c3        0x218 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_info      0x0027db        0x212 build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_info      0x0029ed        0xc88 build/default/production/mcc_generated_files/mccp2_compare.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x429
+.debug_abbrev     0x000000        0x7b0
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x34 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_abbrev    0x000034         0x59 build/default/production/mcc_generated_files/pin_manager.o
@@ -312,8 +413,12 @@ __FDEVOPT1
  .debug_abbrev    0x00033e          0x1 build/default/production/mcc_generated_files/mcc.o
  .debug_abbrev    0x00033f         0xb4 build/default/production/mcc_generated_files/system.o
  .debug_abbrev    0x0003f3         0x36 build/default/production/main.o
+ .debug_abbrev    0x000429        0x155 build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_abbrev    0x00057e         0x89 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_abbrev    0x000607         0x89 build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_abbrev    0x000690        0x120 build/default/production/mcc_generated_files/mccp2_compare.o
 
-.debug_line       0x000000        0x690
+.debug_line       0x000000        0xab9
  *(.debug_line)
  .debug_line      0x000000         0x55 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_line      0x000055        0x121 build/default/production/mcc_generated_files/pin_manager.o
@@ -321,10 +426,14 @@ __FDEVOPT1
  .debug_line      0x0002d7        0x11b build/default/production/mcc_generated_files/clock.o
  .debug_line      0x0003f2        0x140 build/default/production/mcc_generated_files/traps.o
  .debug_line      0x000532         0x1a build/default/production/mcc_generated_files/mcc.o
- .debug_line      0x00054c        0x10f build/default/production/mcc_generated_files/system.o
- .debug_line      0x00065b         0x35 build/default/production/main.o
+ .debug_line      0x00054c        0x111 build/default/production/mcc_generated_files/system.o
+ .debug_line      0x00065d         0x39 build/default/production/main.o
+ .debug_line      0x000696        0x161 build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_line      0x0007f7         0xb1 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_line      0x0008a8         0xb0 build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_line      0x000958        0x161 build/default/production/mcc_generated_files/mccp2_compare.o
 
-.debug_frame      0x000000        0x32e
+.debug_frame      0x000000        0x85e
  *(.debug_frame)
  .debug_frame     0x000000         0x2e build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_frame     0x00002e         0x2e build/default/production/mcc_generated_files/pin_manager.o
@@ -333,13 +442,19 @@ __FDEVOPT1
  .debug_frame     0x000154        0x17e build/default/production/mcc_generated_files/traps.o
  .debug_frame     0x0002d2         0x2e build/default/production/mcc_generated_files/system.o
  .debug_frame     0x000300         0x2e build/default/production/main.o
+ .debug_frame     0x00032e        0x202 build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_frame     0x000530         0x96 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_frame     0x0005c6         0x96 build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_frame     0x00065c        0x202 build/default/production/mcc_generated_files/mccp2_compare.o
 
-.debug_str        0x000000         0xd9
+.debug_str        0x000000        0x211
  *(.debug_str)
  .debug_str       0x000000         0xa3 build/default/production/mcc_generated_files/spi2.o
  .debug_str       0x0000a3         0x12 build/default/production/mcc_generated_files/clock.o
  .debug_str       0x0000b5         0x18 build/default/production/mcc_generated_files/traps.o
  .debug_str       0x0000cd          0xc build/default/production/mcc_generated_files/system.o
+ .debug_str       0x0000d9         0x9c build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_str       0x000175         0x9c build/default/production/mcc_generated_files/mccp2_compare.o
 
 .debug_loc
  *(.debug_loc)
@@ -348,7 +463,7 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x1ed
+                  0x000000        0x868
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x2b build/default/production/mcc_generated_files/interrupt_manager.o
@@ -364,11 +479,19 @@ __FDEVOPT1
                   0x0001aa         0x28 build/default/production/mcc_generated_files/system.o
  .debug_pubnames
                   0x0001d2         0x1b build/default/production/main.o
+ .debug_pubnames
+                  0x0001ed        0x2ae build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_pubnames
+                  0x00049b         0x92 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_pubnames
+                  0x00052d         0x8d build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_pubnames
+                  0x0005ba        0x2ae build/default/production/mcc_generated_files/mccp2_compare.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0xa8
+.debug_aranges    0x000000        0x108
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/production/mcc_generated_files/interrupt_manager.o
@@ -384,6 +507,14 @@ __FDEVOPT1
                   0x000078         0x18 build/default/production/mcc_generated_files/system.o
  .debug_aranges
                   0x000090         0x18 build/default/production/main.o
+ .debug_aranges
+                  0x0000a8         0x18 build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_aranges
+                  0x0000c0         0x18 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_aranges
+                  0x0000d8         0x18 build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_aranges
+                  0x0000f0         0x18 build/default/production/mcc_generated_files/mccp2_compare.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1818,50 +1949,72 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x0000a8        0x1c1
+                  0x000108        0x34d
  .debug_pubtypes
-                  0x0000a8         0x12 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x000108         0x12 build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_pubtypes
-                  0x0000ba         0x1f build/default/production/mcc_generated_files/pin_manager.o
+                  0x00011a         0x1f build/default/production/mcc_generated_files/pin_manager.o
  .debug_pubtypes
-                  0x0000d9         0xa0 build/default/production/mcc_generated_files/spi2.o
+                  0x000139         0xa0 build/default/production/mcc_generated_files/spi2.o
  .debug_pubtypes
-                  0x000179         0x2b build/default/production/mcc_generated_files/clock.o
+                  0x0001d9         0x2b build/default/production/mcc_generated_files/clock.o
  .debug_pubtypes
-                  0x0001a4         0x71 build/default/production/mcc_generated_files/traps.o
+                  0x000204         0x71 build/default/production/mcc_generated_files/traps.o
  .debug_pubtypes
-                  0x000215         0x42 build/default/production/mcc_generated_files/system.o
+                  0x000275         0x42 build/default/production/mcc_generated_files/system.o
  .debug_pubtypes
-                  0x000257         0x12 build/default/production/main.o
+                  0x0002b7         0x12 build/default/production/main.o
+ .debug_pubtypes
+                  0x0002c9         0xa7 build/default/production/mcc_generated_files/mccp4_compare.o
+ .debug_pubtypes
+                  0x000370         0x1f build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .debug_pubtypes
+                  0x00038f         0x1f build/default/production/mcc_generated_files/rgb_red_led1.o
+ .debug_pubtypes
+                  0x0003ae         0xa7 build/default/production/mcc_generated_files/mccp2_compare.o
 
 __c30_signature
-                  0x000269         0x3c
+                  0x000455         0x54
  __c30_signature
-                  0x000269          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x000455          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
  __c30_signature
-                  0x00026f          0x6 build/default/production/mcc_generated_files/pin_manager.o
+                  0x00045b          0x6 build/default/production/mcc_generated_files/pin_manager.o
  __c30_signature
-                  0x000275          0x6 build/default/production/mcc_generated_files/spi2.o
+                  0x000461          0x6 build/default/production/mcc_generated_files/spi2.o
  __c30_signature
-                  0x00027b          0x6 build/default/production/mcc_generated_files/clock.o
+                  0x000467          0x6 build/default/production/mcc_generated_files/clock.o
  __c30_signature
-                  0x000281          0x6 build/default/production/mcc_generated_files/traps.o
+                  0x00046d          0x6 build/default/production/mcc_generated_files/traps.o
  __c30_signature
-                  0x000287          0x6 build/default/production/mcc_generated_files/mcc.o
+                  0x000473          0x6 build/default/production/mcc_generated_files/mcc.o
  __c30_signature
-                  0x00028d          0x6 build/default/production/mcc_generated_files/system.o
+                  0x000479          0x6 build/default/production/mcc_generated_files/system.o
  __c30_signature
-                  0x000293          0x6 build/default/production/main.o
+                  0x00047f          0x6 build/default/production/main.o
  __c30_signature
-                  0x000299          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
+                  0x000485          0x6 build/default/production/mcc_generated_files/mccp4_compare.o
  __c30_signature
-                  0x00029f          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
+                  0x00048b          0x6 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ __c30_signature
+                  0x000491          0x6 build/default/production/mcc_generated_files/rgb_red_led1.o
+ __c30_signature
+                  0x000497          0x6 build/default/production/mcc_generated_files/mccp2_compare.o
+ __c30_signature
+                  0x00049d          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
+ __c30_signature
+                  0x0004a3          0x6 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(data_init_24.o)
 
 .ndata              0x0800          0x2
  .ndata             0x0800          0x2 build/default/production/mcc_generated_files/traps.o
 
-.bss                0x0802         0x20
- .bss               0x0802         0x20 build/default/production/mcc_generated_files/traps.o
+.nbss               0x0802          0x8
+ .nbss              0x0802          0x2 build/default/production/mcc_generated_files/mccp4_compare.o
+ .nbss              0x0804          0x2 build/default/production/mcc_generated_files/rgb_blue_led1.o
+ .nbss              0x0806          0x2 build/default/production/mcc_generated_files/rgb_red_led1.o
+ .nbss              0x0808          0x2 build/default/production/mcc_generated_files/mccp2_compare.o
+
+.bss                0x080a         0x20
+ .bss               0x080a         0x20 build/default/production/mcc_generated_files/traps.o
 
 .ivt._OscillatorFail
                   0x000004          0x2
@@ -1913,7 +2066,7 @@ __c30_signature
 .config_BSLIM     0x015f10          0x2
  .config_BSLIM    0x015f10          0x2 build/default/production/mcc_generated_files/system.o
 
-.text             0x0002ac        0x1f8
+.text             0x0002ac        0x4d2
  .text            0x0002ac        0x164 build/default/production/mcc_generated_files/spi2.o
                   0x0002ac                  _SPI2_Initialize
                   0x0002c6                  _SPI2_Exchange
@@ -1922,20 +2075,72 @@ __c30_signature
                   0x0003d0                  _SPI2_Exchange8bitBuffer
                   0x0003e4                  _SPI2_TransferModeGet
                   0x000408                  _SPI2_StatusGet
- .text            0x000410         0x46 build/default/production/mcc_generated_files/clock.o
-                  0x000410                  _CLOCK_Initialize
- .text            0x000456         0x36 build/default/production/mcc_generated_files/pin_manager.o
-                  0x000456                  _PIN_MANAGER_Initialize
- .text            0x00048c         0x18 build/default/production/mcc_generated_files/traps.o
-                  0x00048c                  _TRAPS_halt_on_error
+ .text            0x000410        0x138 build/default/production/mcc_generated_files/mccp4_compare.o
+                  0x000410                  _MCCP4_COMPARE_Initialize
+                  0x000444                  _MCCP4_COMPARE_CallBack
+                  0x00044a                  _MCCP4_COMPARE_Tasks
+                  0x00045e                  _MCCP4_COMPARE_TimerCallBack
+                  0x000464                  _MCCP4_COMPARE_TimerTasks
+                  0x000478                  _MCCP4_COMPARE_Start
+                  0x000480                  _MCCP4_COMPARE_Stop
+                  0x000488                  _MCCP4_COMPARE_SingleCompare16ValueSet
+                  0x000494                  _MCCP4_COMPARE_DualCompareValueSet
+                  0x0004a6                  _MCCP4_COMPARE_DualEdgeBufferedConfig
+                  0x0004b8                  _MCCP4_COMPARE_CenterAlignedPWMConfig
+                  0x0004ca                  _MCCP4_COMPARE_EdgeAlignedPWMConfig
+                  0x0004dc                  _MCCP4_COMPARE_VariableFrequencyPulseConfig
+                  0x0004e8                  _MCCP4_COMPARE_IsCompareCycleComplete
+                  0x000500                  _MCCP4_COMPARE_TriggerStatusGet
+                  0x000518                  _MCCP4_COMPARE_TriggerStatusSet
+                  0x000520                  _MCCP4_COMPARE_TriggerStatusClear
+                  0x000528                  _MCCP4_COMPARE_SingleCompareStatusGet
+                  0x000540                  _MCCP4_COMPARE_SingleCompareStatusClear
+ .text            0x000548        0x136 build/default/production/mcc_generated_files/mccp2_compare.o
+                  0x000548                  _MCCP2_COMPARE_Initialize
+                  0x00057c                  _MCCP2_COMPARE_CallBack
+                  0x000582                  _MCCP2_COMPARE_Tasks
+                  0x000594                  _MCCP2_COMPARE_TimerCallBack
+                  0x00059a                  _MCCP2_COMPARE_TimerTasks
+                  0x0005ae                  _MCCP2_COMPARE_Start
+                  0x0005b6                  _MCCP2_COMPARE_Stop
+                  0x0005be                  _MCCP2_COMPARE_SingleCompare16ValueSet
+                  0x0005ca                  _MCCP2_COMPARE_DualCompareValueSet
+                  0x0005dc                  _MCCP2_COMPARE_DualEdgeBufferedConfig
+                  0x0005ee                  _MCCP2_COMPARE_CenterAlignedPWMConfig
+                  0x000600                  _MCCP2_COMPARE_EdgeAlignedPWMConfig
+                  0x000612                  _MCCP2_COMPARE_VariableFrequencyPulseConfig
+                  0x00061e                  _MCCP2_COMPARE_IsCompareCycleComplete
+                  0x000636                  _MCCP2_COMPARE_TriggerStatusGet
+                  0x00064e                  _MCCP2_COMPARE_TriggerStatusSet
+                  0x000656                  _MCCP2_COMPARE_TriggerStatusClear
+                  0x00065e                  _MCCP2_COMPARE_SingleCompareStatusGet
+                  0x000676                  _MCCP2_COMPARE_SingleCompareStatusClear
+ .text            0x00067e         0x46 build/default/production/mcc_generated_files/clock.o
+                  0x00067e                  _CLOCK_Initialize
+ .text            0x0006c4         0x42 build/default/production/mcc_generated_files/rgb_blue_led1.o
+                  0x0006c4                  _RGB_BLUE_LED1_Initialize
+                  0x0006ca                  _RGB_BLUE_LED1_On
+                  0x0006d6                  _RGB_BLUE_LED1_Off
+                  0x0006e0                  _RGB_BLUE_LED1_Toggle
+                  0x0006f2                  _RGB_BLUE_LED1_IntensitySet
+ .text            0x000706         0x42 build/default/production/mcc_generated_files/rgb_red_led1.o
+                  0x000706                  _RGB_RED_LED1_Initialize
+                  0x00070c                  _RGB_RED_LED1_On
+                  0x000718                  _RGB_RED_LED1_Off
+                  0x000722                  _RGB_RED_LED1_Toggle
+                  0x000734                  _RGB_RED_LED1_IntensitySet
+ .text            0x000748         0x36 build/default/production/mcc_generated_files/pin_manager.o
+                  0x000748                  _PIN_MANAGER_Initialize
 
-.dinit            0x0004a4         0x10
- .dinit           0x0004a4         0x10 data_init
+.dinit            0x00077e         0x28
+ .dinit           0x00077e         0x28 data_init
 
-.text             0x0004b4         0x1a
- .text            0x0004b4          0xe build/default/production/mcc_generated_files/system.o
-                  0x0004b4                  _SYSTEM_Initialize
- .text            0x0004c2          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x0004c2                  _INTERRUPT_Initialize
- .text            0x0004c8          0x6 build/default/production/main.o
-                  0x0004c8                  _main
+.text             0x0007a6         0x3e
+ .text            0x0007a6         0x18 build/default/production/mcc_generated_files/traps.o
+                  0x0007a6                  _TRAPS_halt_on_error
+ .text            0x0007be         0x12 build/default/production/mcc_generated_files/system.o
+                  0x0007be                  _SYSTEM_Initialize
+ .text            0x0007d0          0xe build/default/production/main.o
+                  0x0007d0                  _main
+ .text            0x0007de          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x0007de                  _INTERRUPT_Initialize

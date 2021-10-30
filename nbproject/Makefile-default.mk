@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/spi2.c mcc_generated_files/clock.c mcc_generated_files/traps.c mcc_generated_files/mcc.c mcc_generated_files/system.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/spi2.c mcc_generated_files/clock.c mcc_generated_files/traps.c mcc_generated_files/mcc.c mcc_generated_files/system.c main.c mcc_generated_files/mccp4_compare.c mcc_generated_files/rgb_blue_led1.c mcc_generated_files/rgb_red_led1.c mcc_generated_files/mccp2_compare.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/spi2.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/traps.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/spi2.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/traps.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o.d ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o.d ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o.d ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/traps.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/main.o ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o
 
 # Source Files
-SOURCEFILES=mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/spi2.c mcc_generated_files/clock.c mcc_generated_files/traps.c mcc_generated_files/mcc.c mcc_generated_files/system.c main.c
+SOURCEFILES=mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/spi2.c mcc_generated_files/clock.c mcc_generated_files/traps.c mcc_generated_files/mcc.c mcc_generated_files/system.c main.c mcc_generated_files/mccp4_compare.c mcc_generated_files/rgb_blue_led1.c mcc_generated_files/rgb_red_led1.c mcc_generated_files/mccp2_compare.c
 
 
 
@@ -143,6 +143,30 @@ ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/f7ac12f6baf13c808526
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/mcc_generated_files/mccp4_compare.o: mcc_generated_files/mccp4_compare.c  .generated_files/flags/default/755ae7abc163eb5cf4a5f02e4b83cbe46ba1765 .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/mccp4_compare.c  -o ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/mccp4_compare.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o: mcc_generated_files/rgb_blue_led1.c  .generated_files/flags/default/9a76ad16cbd0abd4f2f05886a9808db57732d759 .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/rgb_blue_led1.c  -o ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o: mcc_generated_files/rgb_red_led1.c  .generated_files/flags/default/f52da69b861f730f40bb8119a6730c72d3327238 .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/rgb_red_led1.c  -o ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/mccp2_compare.o: mcc_generated_files/mccp2_compare.c  .generated_files/flags/default/d2b9a1e570cd89c739705efe3160704fbeb30dec .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/mccp2_compare.c  -o ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/mccp2_compare.o.d"      -g -D__DEBUG   -mno-eds-warn  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o: mcc_generated_files/interrupt_manager.c  .generated_files/flags/default/6fa1b2fc9bb5976dceabe861784aa351ced18d27 .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
@@ -191,6 +215,30 @@ ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/9e20fe9ed6518b95b915
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  main.c  -o ${OBJECTDIR}/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/mccp4_compare.o: mcc_generated_files/mccp4_compare.c  .generated_files/flags/default/a2cc7e4dbe2eed3f4e43b50495260999172ea21f .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/mccp4_compare.c  -o ${OBJECTDIR}/mcc_generated_files/mccp4_compare.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/mccp4_compare.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o: mcc_generated_files/rgb_blue_led1.c  .generated_files/flags/default/add80400bf1dbfa665cb69390280938c420ef496 .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/rgb_blue_led1.c  -o ${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/rgb_blue_led1.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o: mcc_generated_files/rgb_red_led1.c  .generated_files/flags/default/215eded80396f4b21a067fe82b4a145eeb08193e .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/rgb_red_led1.c  -o ${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/rgb_red_led1.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcc_generated_files/mccp2_compare.o: mcc_generated_files/mccp2_compare.c  .generated_files/flags/default/6858097299d0c718ee1d74c52a52265b80779175 .generated_files/flags/default/91d1cf12d76cbaa763fa9833fa8363b11b31adf0
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcc_generated_files/mccp2_compare.c  -o ${OBJECTDIR}/mcc_generated_files/mccp2_compare.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/mccp2_compare.o.d"      -mno-eds-warn  -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

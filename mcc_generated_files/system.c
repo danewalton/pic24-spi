@@ -97,15 +97,19 @@
 #include "pin_manager.h"
 #include "clock.h"
 #include "system.h"
-#include "spi2.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "spi2.h"
+#include "mccp2_compare.h"
+#include "mccp4_compare.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    CLOCK_Initialize();
     INTERRUPT_Initialize();
+    CLOCK_Initialize();
+    MCCP4_COMPARE_Initialize();
+    MCCP2_COMPARE_Initialize();
     SPI2_Initialize();
 }
 
